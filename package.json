@@ -5,7 +5,9 @@
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.5"
+    "react-redux": "^5.0.7",
+    "react-scripts": "2.0.5",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,5 +23,13 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "file-loader": "^2.0.0",
+    "react-bootstrap": "^0.32.4",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.20.2"
+  }
 }

@@ -1,25 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+//import axios from 'axios';
+
+import Navbar from './components/Navbar';
+import Product from './components/Product';
+import products from './data/products.json';
 
 class App extends Component {
+
+  componentDidMount() {
+    /*axios.get("http://localhost/products", {port: 8000}).then(res => {
+      console.log(res);
+    })*/
+  }
+
   render() {
+    const productList = products.products.map(product => {
+      return (
+        <Product title={product.title} price={product.price} key={product.id}/>
+      )
+    });
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Navbar />
+        <div className="container">
+          <div className="row">
+            {productList}
+          </div>
+        </div>
       </div>
     );
   }
