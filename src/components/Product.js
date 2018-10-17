@@ -1,6 +1,18 @@
 import React, {Component} from 'react';
 
 class Product extends Component {
+  state = {
+    selections: 0
+  }
+
+  handleClick = () => {
+    let i = this.state.selections;
+    this.setState({
+      selections: ++i
+    })
+    console.log(this.state.selections);
+  }
+  
   render() {
     const { title, price } = this.props;
     return (  
@@ -14,7 +26,12 @@ class Product extends Component {
             <p>{`Price: ${price} USD`}</p>
           </div>
           <div className="card-action">
-            <span>Add to chart</span>
+            <button 
+              className="waves-effect waves-light btn center"
+              onClick={this.handleClick}
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </div>

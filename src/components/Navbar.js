@@ -6,7 +6,6 @@ const Navbar = (props) => {
       <div className="container">
         <span className="brand-logo">fresh fruits</span>
         <ul className="right">
-          <li>Sign In</li>
           <li>Cart</li>
         </ul>
       </div>
