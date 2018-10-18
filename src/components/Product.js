@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
 class Product extends Component {
-  state = {
-    selections: 0
-  }
 
   handleClick = () => {
-    let i = this.state.selections;
-    this.setState({
-      selections: ++i
-    })
-    console.log(this.state.selections);
+    let {id, title, price, selections} = this.props;
+    selections = selections === true ? 0 : ++selections;
+    this.props.addToCart(id,title,price,selections);
   }
   
   render() {
@@ -39,4 +35,19 @@ class Product extends Component {
   }
 }
 
-export default Product;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (id,title,price,selections) => { dispatch({
+      type: "ADD_TO_CART",
+      id, title, price, selections})
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

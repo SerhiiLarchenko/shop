@@ -16,7 +16,13 @@ class App extends Component {
   render() {
     const productList = products.products.map(product => {
       return (
-        <Product title={product.title} price={product.price} key={product.id}/>
+        <Product 
+          title={product.title} 
+          price={product.price} 
+          id={product.id}
+          key={product.id}
+          selections
+        />
       )
     });
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import CartIcon from './CartIcon'
 
 const Navbar = (props) => {
   return (
@@ -6,7 +7,7 @@ const Navbar = (props) => {
       <div className="container">
         <span className="brand-logo">fresh fruits</span>
         <ul className="right">
-          <li>Cart</li>
+          <li><CartIcon/></li>
         </ul>
       </div>
     </nav>
