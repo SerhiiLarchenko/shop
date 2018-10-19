@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Navbar from './components/Navbar';
 import Product from './components/Product';
 import products from './data/products.json';
+//import CartList from './components/CartList';
 
 class App extends Component {
 
@@ -21,7 +22,6 @@ class App extends Component {
           price={product.price} 
           id={product.id}
           key={product.id}
-          selections
         />
       )
     });

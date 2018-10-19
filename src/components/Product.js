@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 class Product extends Component {
 
   handleClick = () => {
-    let {id, title, price, selections} = this.props;
+    let {id, title, price} = this.props;
     this.props.addToCart(id,title,price);
   }
   
   render() {
+    console.log(this.props);
     const { title, price } = this.props;
     return (  
       <div className="col s12 m3">
