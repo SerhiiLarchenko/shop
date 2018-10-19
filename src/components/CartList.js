@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NONAME } from 'dns';
 
 class CartList extends Component {
   render() {
+    console.log(this.props);
+    const list = this.props.cart.map((product) => {
+      return (
+        <li key={product.id}>{product.title}</li>
+      )
+    });
     return (
       <div className="collection"
         style = {{width: "300px",
                   position: "fixed",
-
                   top: "10px",
                   right:"10px"}}
       >
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
+        {list}
       </div>
     )
   }
 }
 
-export default CartList;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart
+  }
+}
+
+export default connect(mapStateToProps)(CartList);

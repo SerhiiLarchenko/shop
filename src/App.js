@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Navbar from './components/Navbar';
 import Product from './components/Product';
 import products from './data/products.json';
-//import CartList from './components/CartList';
+import CartList from './components/CartList';
 
 class App extends Component {
 
@@ -29,6 +29,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
+        <CartList />
         <div className="container">
           <div className="row">
             {productList}
