@@ -22,6 +22,7 @@ class App extends Component {
           price={product.price} 
           id={product.id}
           key={product.id}
+          times={0}
         />
       )
     });

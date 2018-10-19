@@ -5,7 +5,6 @@ class Product extends Component {
 
   handleClick = () => {
     let {id, title, price} = this.props;
-    
     this.props.addToCart(id,title,price);
   }
   
@@ -43,9 +42,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (id,title,price) => { dispatch({
+    addToCart: (id,title,price,times) => { dispatch({
       type: "ADD_TO_CART",
-      id, title, price})
+      id, title, price, times})
     }
   }
 }

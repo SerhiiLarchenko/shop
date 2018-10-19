@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 
 class CartList extends Component {
   render() {
-    console.log(this.props);
     const list = this.props.cart.map((product) => {
       return (
-        <li key={product.id}>{product.title}</li>
+        <li key={product.id}>{product.title}: {product.times}</li>
       )
     });
     return (
@@ -14,8 +13,10 @@ class CartList extends Component {
         style = {{width: "300px",
                   position: "fixed",
                   top: "10px",
-                  right:"10px"}}
+                  right:"10px",
+                  zIndex: "1000"}}
       >
+      <h6>In cart:</h6>
         {list}
       </div>
     )

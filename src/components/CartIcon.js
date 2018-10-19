@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 class CartIcon extends Component {
 
     render() {
-        let inCart = this.props.cart.length ? this.props.cart.length : 0;
+        let inCart = 0;
+        if (this.props.cart.length) {
+           inCart = this.props.cart.reduce((sum, next) => sum + next.times, 0);
+        }
         return (
            <span>In cart: {inCart}</span> 
         )
