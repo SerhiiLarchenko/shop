@@ -1,10 +1,14 @@
 const initState = {
-    cart: []
+    cart: [],
+    cartIsShown: false
 }
 
 const rootReducer = (state=initState, action) => {
+
+  let newState = {...state};
+
   if (action.type === 'ADD_TO_CART') {
-    let newCart = state.cart.length ? [...state.cart] : [];
+    let newCart = newState.cart.length ? [...newState.cart] : [];
     let match = newCart.find((product)=>{
          return product.id === action.id;
     });
@@ -25,10 +29,17 @@ const rootReducer = (state=initState, action) => {
     }
     
     newCart.push(newSelection);
-    state.cart = newCart;
+    newState.cart = newCart;
   }
-  let newState = {...state}
-  console.log(newState);
+
+  if (action.type === "SHOW_CART_LIST") {
+    newState.cartIsShown = true
+  }
+
+  if (action.type === "HIDE_CART_LIST") {
+    newState.cartIsShown = false;
+  }
+
   return newState;
 }
 

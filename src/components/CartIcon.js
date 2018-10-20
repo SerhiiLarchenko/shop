@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+
+
 class CartIcon extends Component {
+
+    handleClick = () => {
+        this.props.showCartList();
+    }
 
     render() {
         let inCart = 0;
@@ -9,7 +15,9 @@ class CartIcon extends Component {
            inCart = this.props.cart.reduce((sum, next) => sum + next.times, 0);
         }
         return (
-           <span>In cart: {inCart}</span> 
+            <>
+                <span onClick={this.handleClick}>In cart: {inCart}</span>
+            </>
         )
     }
 }
@@ -21,5 +29,16 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
 
-export default connect(mapStateToProps)(CartIcon);
+    return {
+        showCartList: () => {
+            dispatch ({
+                type: "SHOW_CART_LIST"
+            })
+        }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
