@@ -1,6 +1,7 @@
 const initState = {
     cart: [],
-    cartIsShown: false
+    cartIsShown: false,
+    formIsShown: false
 }
 
 const rootReducer = (state=initState, action) => {
@@ -33,11 +34,19 @@ const rootReducer = (state=initState, action) => {
   }
 
   if (action.type === "SHOW_CART_LIST") {
-    newState.cartIsShown = true
+    newState.cartIsShown = true;
   }
 
   if (action.type === "HIDE_CART_LIST") {
     newState.cartIsShown = false;
+  }
+
+  if (action.type === "SHOW_FORM") {
+    newState.formIsShown = true;
+  }
+
+  if (action.type === "EMPTY_CART") {
+    newState.cart = [];
   }
 
   return newState;

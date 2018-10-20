@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Product from './components/Product';
 import products from './data/products.json';
 import CartList from './components/CartList';
+import Form from './components/Form';
 
 class App extends Component {
 
@@ -31,6 +32,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <CartList />
+        <Form />
         <div className="container">
           <div className="row">
             {productList}

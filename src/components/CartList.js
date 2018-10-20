@@ -7,16 +7,17 @@ class CartList extends Component {
     this.props.hideCartList();
   }
 
+  showForm = () => {
+    this.props.showForm();
+  }
+
   render() {
     
-    console.log(this.props);
-
     const list = this.props.cart.map((product) => {
       return (
         <li key={product.id}>{product.title}: {product.times}</li>
       )
     });
-
 
     return (
       this.props.isShown ? (
@@ -29,7 +30,8 @@ class CartList extends Component {
                     backgroundColor: "white"}}
         >
         <h6>In cart:<button onClick={this.handleClick}>X</button></h6>
-          {list}
+        {list}
+        <button onClick={this.showForm}>Buy</button>
       </div>) : (
         <div></div>
       )
@@ -41,15 +43,21 @@ const mapStateToProps = (state) => {
   return {
     cart: state.cart,
     isShown: state.cartIsShown
+
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     hideCartList: () => {
-        dispatch ({
-            type: "HIDE_CART_LIST"
-        })
+       dispatch ({
+           type: "HIDE_CART_LIST"
+       })
+    },
+    showForm: () => {
+       dispatch ({
+         type: "SHOW_FORM"
+       })
     }
 }
 }
