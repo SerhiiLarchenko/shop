@@ -49,6 +49,10 @@ const rootReducer = (state=initState, action) => {
     newState.cart = [];
   }
 
+  if (action.type === "HIDE_FORM") {
+    newState.formIsShown = false;
+  }
+
   return newState;
 }
 

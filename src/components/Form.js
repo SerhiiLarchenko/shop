@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+
+let orders = [];
+
 class Form extends Component {
 
-  state = {
-    orders: []
-  }
-  
   handleSubmit = (event) => {
     event.preventDefault();
 
-    this.setState({
-      orders: [...this.state.orders, {
-        name: event.target.name,
-        email: event.target.email,
+      orders = [...orders, {
+        name: event.target.name.value,
+        email: event.target.email.value,
         cart: this.props.cart
       }]
-    })
 
-    console.log(this.state);
+    console.log(orders);
 
     this.props.emptyCart();
-
-    console.log(this.props.cart);
+    this.props.hideForm();
     
   }
 
@@ -61,6 +57,9 @@ const mapDispatchToState = dispatch => {
   return {
     emptyCart: () => {
       dispatch({type: "EMPTY_CART"})
+    },
+    hideForm: () => {
+      dispatch({type: "HIDE_FORM"})
     }
   }
 }
