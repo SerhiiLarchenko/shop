@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 
 import Navbar from './components/Navbar';
 import Product from './components/Product';
-import products from './data/products.json';
 import CartList from './components/CartList';
 import Form from './components/Form';
 
 class App extends Component {
 
-  componentDidMount() {
-    /*axios.get("http://localhost/products", {port: 8000}).then(res => {
-      console.log(res);
-    })*/
+  state = {
+    products : []
+  }
+
+  componentWillMount() {
+    axios.get('http://localhost:8000/products').then( res => {
+      this.setState({
+        products: res.data.products
+      })
+    })
   }
 
   render() {
-    const productList = products.products.map(product => {
+    console.log(this.state);
+    const productList = this.state.products.map(product => {
       return (
         <Product 
           title={product.title} 
