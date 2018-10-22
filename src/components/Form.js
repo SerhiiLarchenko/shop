@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-
-let orders = [];
+import axios from 'axios';
 
 class Form extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+ 
+    let order = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      cart: this.props.cart
+    }
 
-      orders = [...orders, {
-        name: event.target.name.value,
-        email: event.target.email.value,
-        cart: this.props.cart
-      }]
+    let orderWrapper = {
+      order
+    }
 
-    console.log(orders);
+    //let jsonOrder = JSON.stringify(order);
+
+    console.log(order);
+
+    axios.post('http://localhost:8000/order', orderWrapper).then(res => {
+      console.log(res);
+    });
 
     this.props.emptyCart();
     this.props.hideForm();

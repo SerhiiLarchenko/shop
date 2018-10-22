@@ -21,7 +21,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state);
     const productList = this.state.products.map(product => {
       return (
         <Product 
