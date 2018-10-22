@@ -1,11 +1,9 @@
 const express = require('express');
-const Joi = require("joi");
+const fs = require('fs');
 
 const app = express();
 
 const serverPort = 8000;
-
-const orders = [];
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -21,11 +19,19 @@ app.get("/products", (req, res) => {
 })
 
 app.post("/order", (req,res) => {
-    orders.push(req.body.order);
+    let { name, email, cart} = req.body,
+        orders = [];
+    fs.readFile(__dirname + "/data/orders.json", (err,data) => {
+        if (err) console.error(err);
+        if (data) orders = JSON.parse(data.toString());
+        console.log(orders)
+        orders.push({name, email, cart});
+    });
+    fs.writeFile(__dirname + "/data/orders.json", JSON.stringify(orders), (err) => {console.log(err)});
     res.send("we will call asap");
-    console.log(orders);
 });
 
 app.listen(serverPort);
+
 
 console.log("server is running");

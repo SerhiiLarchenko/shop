@@ -12,16 +12,10 @@ class Form extends Component {
       email: event.target.email.value,
       cart: this.props.cart
     }
-
-    let orderWrapper = {
-      order
-    }
-
-    //let jsonOrder = JSON.stringify(order);
-
+  
     console.log(order);
 
-    axios.post('http://localhost:8000/order', orderWrapper).then(res => {
+    axios.post('http://localhost:8000/order', order).then(res => {
       console.log(res);
     });
 
