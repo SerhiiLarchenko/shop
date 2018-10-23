@@ -1,0 +1,32 @@
+.cart-element {
+    width: 300px;
+    height: 100px;
+    background-color: white;
+    z-index: 1;
+}
+
+.cart-element>img, .cart-element>ul, .cart-element>div {
+    float:left;
+    margin-left: 5px;
+}
+
+.cart-element>ul {
+    list-style-type: none;
+}
+
+.clearfix {
+    overflow: hidden;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.cart-element>img {
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+}

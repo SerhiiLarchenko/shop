@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import ListElement from './ListElement';
+
 class CartList extends Component {
 
   handleClick = () => {
@@ -15,7 +17,11 @@ class CartList extends Component {
     
     const list = this.props.cart.map((product) => {
       return (
-        <li key={product.id}>{product.title}: {product.times}</li>
+        <ListElement 
+          key={product.id}
+          title={product.title}
+          price={product.times}
+        />
       )
     });
 
