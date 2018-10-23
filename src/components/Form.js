@@ -13,8 +13,6 @@ class Form extends Component {
       cart: this.props.cart
     }
   
-    console.log(order);
-
     axios.post('http://localhost:8000/order', order).then(res => {
       console.log(res);
     });

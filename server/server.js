@@ -5,7 +5,7 @@ const app = express();
 
 const serverPort = 8000;
 
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
@@ -22,13 +22,15 @@ app.post("/order", (req,res) => {
     let { name, email, cart} = req.body,
         orders = [];
     fs.readFile(__dirname + "/data/orders.json", (err,data) => {
-        if (err) console.error(err);
+        if (err) console.error(err, "24");
         if (data) orders = JSON.parse(data.toString());
-        console.log(orders)
         orders.push({name, email, cart});
+        fs.writeFile(__dirname + "/data/orders.json",
+         JSON.stringify(orders), (err) =>
+           {console.error(err)});
     });
-    fs.writeFile(__dirname + "/data/orders.json", JSON.stringify(orders), (err) => {console.log(err)});
-    res.send("we will call asap");
+    
+    res.send("we will call you asap");
 });
 
 app.listen(serverPort);
