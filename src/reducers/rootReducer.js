@@ -53,6 +53,20 @@ const rootReducer = (state=initState, action) => {
     newState.formIsShown = false;
   }
 
+  if (action.type === "REMOVE_FROM_CART") {
+    newState.cart = newState.cart.filter(product => product.id === action.id);
+  }
+
+  if (action.type === "INCREASE_TIMES") {
+    let product = newState.cart.find(product => product.id === action.id);
+    product.times = ++product.times;
+  }
+
+  if (action.type === "DECREASE_TIMES") {
+    let product = newState.cart.find(product => product.id === action.id);
+    product.times = --product.times;
+  }
+
   return newState;
 }
 

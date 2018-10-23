@@ -20,7 +20,9 @@ class CartList extends Component {
         <ListElement 
           key={product.id}
           title={product.title}
-          price={product.times}
+          price={product.price}
+          times={product.times}
+          id={product.id}
         />
       )
     });

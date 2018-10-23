@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 import './style.css';
 
 class ListElement extends Component {
 
+    increaseTimes = () => {
+        let {times, id} = this.props;
+        this.props.increaseTimes(times, id);
+    }
+
+    decreaseTimes = () => {
+        let {times, id} = this.props;
+        this.props.decreaseTimes(times, id);
+    }
+
+    removeFromCart = () => {
+        this.props.removeFromCart(this.props.id);
+    }
+
     render() {
-        const { title, price, times} = this.props;
+        const { title, price, times, id} = this.props;
         console.log(this.props);
         return (
             <li className="cart-element clearfix">
@@ -16,13 +32,31 @@ class ListElement extends Component {
                     <li>Total: {price*times}</li>
                 </ul>
                 <div>
-                    <button>+</button>
+                    <button onClick={this.increaseTimes}>+</button>
                     <button>-</button>
-                    <button>Delete</button>
+                    <button onClick={this.removeFromCart}>Delete</button>
                 </div>
             </li>
         )
     }
 }
 
-export default ListElement;
+
+const mapDispatchToState = (dispatch) => {
+    return {
+        increaseTimes: (times,id) => {dispatch({
+            type: "INCREASE_TIMES",
+            times, id})
+        },
+        decreaseTimes: (times,id) => {dispatch({
+            type: "DECREASE_TIMES",
+            times, id})
+        },
+        removeFromCart: (id) => {dispatch({
+            type: "REMOVE_FROM_CART",
+            id
+        })}
+    }
+}
+
+export default connect(null, mapDispatchToState)(ListElement);
