@@ -30,12 +30,14 @@ class CartList extends Component {
     return (
       this.props.isShown ? (
         <div className="collection"
-          style = {{width: "300px",
+          style = {{width: "320px",
                     position: "fixed",
                     top: "62px",
                     right:"10px",
                     zIndex: "1000",
-                    backgroundColor: "white"}}
+                    backgroundColor: "white",
+                    overflowY: "scroll",
+                    maxHeight: "500px"}}
         >
         <h6>In cart:<button onClick={this.handleClick}>X</button></h6>
         {list}

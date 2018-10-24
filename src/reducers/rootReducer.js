@@ -53,19 +53,49 @@ const rootReducer = (state=initState, action) => {
     newState.formIsShown = false;
   }
 
-  if (action.type === "REMOVE_FROM_CART") {
-    newState.cart = newState.cart.filter(product => product.id === action.id);
+  if (action.type === 'REMOVE_FROM_CART') {
+    let newCart = newState.cart.filter(product => {
+     return product.id !== action.id
+    });
+
+    newState.cart = newCart;
   }
 
   if (action.type === "INCREASE_TIMES") {
-    let product = newState.cart.find(product => product.id === action.id);
-    product.times = ++product.times;
+    let match = newState.cart.find(product => {
+      return product.id === action.id;
+    })
+
+    let newCart = newState.cart.filter(product => {
+      return product.id !== action.id;
+    })
+
+    let newProduct = {...match};
+    newProduct.times = ++newProduct.times;
+
+    newCart.push(newProduct);
+
+    newState.cart = newCart;
   }
 
   if (action.type === "DECREASE_TIMES") {
-    let product = newState.cart.find(product => product.id === action.id);
-    product.times = --product.times;
+    let match = newState.cart.find(product => {
+      return product.id === action.id;
+    })
+
+    let newCart = newState.cart.filter(product => {
+      return product.id !== action.id;
+    })
+
+    let newProduct = {...match};
+    console.log(newProduct.times);
+    if (newProduct.times >= 1) newProduct.times = --newProduct.times;
+
+    newCart.push(newProduct);
+
+    newState.cart = newCart;
   }
+
 
   return newState;
 }

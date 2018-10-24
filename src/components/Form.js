@@ -22,9 +22,13 @@ class Form extends Component {
     
   }
 
+  hideForm = () => {
+    this.props.hideForm();
+  }
+
   render() {
 
-    const totalPrice = this.props.cart.reduce((sum, next)=> sum + next.price*next.times, 0);
+    const totalPrice = this.props.cart.reduce((sum, next)=> sum + next.price*100*next.times/100, 0);
   
     return this.props.formIsShown ? (
         <div style={{
@@ -41,6 +45,7 @@ class Form extends Component {
             <input type="email" name="email"/>
             <button >Send</button>
           </form>
+          <button onClick={this.hideForm}>close</button>
         </div>
     ) : (<></>);
   }

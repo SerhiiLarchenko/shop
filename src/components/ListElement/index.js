@@ -21,7 +21,7 @@ class ListElement extends Component {
     }
 
     render() {
-        const { title, price, times, id} = this.props;
+        const { title, price, times} = this.props;
         console.log(this.props);
         return (
             <li className="cart-element clearfix">
@@ -29,11 +29,11 @@ class ListElement extends Component {
                 <ul>
                     <li>{title}</li>
                     <li>Quantity: {times}</li>
-                    <li>Total: {price*times}</li>
+                    <li>Total: {price*100*times/100}</li>
                 </ul>
                 <div>
                     <button onClick={this.increaseTimes}>+</button>
-                    <button>-</button>
+                    <button onClick={this.decreaseTimes}>-</button>
                     <button onClick={this.removeFromCart}>Delete</button>
                 </div>
             </li>
