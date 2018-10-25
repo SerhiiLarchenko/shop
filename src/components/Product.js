@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
+import { addToCart } from '../store/actions/cartActions';
+
 class Product extends Component {
 
   handleClick = () => {
@@ -40,13 +42,13 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+/*const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (id,title,price,times) => { dispatch({
       type: "ADD_TO_CART",
       id, title, price, times})
     }
   }
-}
+}*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default connect(mapStateToProps, { addToCart })(Product);

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import { hideForm } from '../store/actions/displayActions';
+import { emptyCart } from '../store/actions/cartActions';
+
 class Form extends Component {
 
   handleSubmit = (event) => {
@@ -28,7 +31,7 @@ class Form extends Component {
 
   render() {
 
-    const totalPrice = this.props.cart.reduce((sum, next)=> sum + next.price*100*next.times/100, 0);
+    const totalPrice = this.props.cart.cart.reduce((sum, next)=> sum + next.price*100*next.times/100, 0);
   
     return this.props.formIsShown ? (
         <div style={{
@@ -58,7 +61,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToState = dispatch => {
+
+/*const mapDispatchToState = dispatch => {
   return {
     emptyCart: () => {
       dispatch({type: "EMPTY_CART"})
@@ -67,6 +71,6 @@ const mapDispatchToState = dispatch => {
       dispatch({type: "HIDE_FORM"})
     }
   }
-}
+}*/
 
-export default connect(mapStateToProps,mapDispatchToState)(Form);
+export default connect(mapStateToProps, { hideForm, emptyCart })(Form);

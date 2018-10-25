@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import ListElement from './ListElement';
 
+import { showForm, hideCartList } from '../store/actions/displayActions';
+
 class CartList extends Component {
 
   handleClick = () => {
@@ -14,8 +16,8 @@ class CartList extends Component {
   }
 
   render() {
-    
-    const list = this.props.cart.map((product) => {
+    console.log(this.props);
+    const list = this.props.cart.cart.map((product) => {
       return (
         <ListElement 
           key={product.id}
@@ -57,7 +59,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+/*const mapDispatchToProps = (dispatch) => {
   return {
     hideCartList: () => {
        dispatch ({
@@ -70,6 +72,6 @@ const mapDispatchToProps = (dispatch) => {
        })
     }
 }
-}
+}*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartList);
+export default connect(mapStateToProps, { hideCartList, showForm })(CartList);

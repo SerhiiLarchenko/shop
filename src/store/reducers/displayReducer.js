@@ -22,5 +22,8 @@ export default function(state = initState, action) {
             return newState;
         case HIDE_FORM:
             newState.formIsShown = false;
+            return newState;
+        default: 
+            return state;
     }
 }

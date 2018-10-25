@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { increaseTimes, decreaseTimes, removeFromCart } from '../../store/actions/cartActions'
+
 
 import './style.css';
 
@@ -41,7 +43,7 @@ class ListElement extends Component {
     }
 }
 
-
+/*
 const mapDispatchToState = (dispatch) => {
     return {
         increaseTimes: (times,id) => {dispatch({
@@ -57,6 +59,6 @@ const mapDispatchToState = (dispatch) => {
             id
         })}
     }
-}
+}*/
 
-export default connect(null, mapDispatchToState)(ListElement);
+export default connect(null, {increaseTimes, decreaseTimes, removeFromCart})(ListElement);

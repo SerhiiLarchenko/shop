@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { showCartList } from '../store/actions/displayActions';
+
 
 
 class CartIcon extends Component {
@@ -29,6 +31,7 @@ const mapStateToProps = (state) => {
     }
 }
 
+/*
 const mapDispatchToProps = (dispatch) => {
 
     return {
@@ -38,7 +41,7 @@ const mapDispatchToProps = (dispatch) => {
             })
         }
     }
-}
+}*/
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
+export default connect(mapStateToProps, {showCartList})(CartIcon);

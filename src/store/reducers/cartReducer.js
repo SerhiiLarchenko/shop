@@ -2,7 +2,7 @@ import {ADD_TO_CART,
     REMOVE_FROM_CART, 
     INCREASE_TIMES, 
     DECREASE_TIMES, 
-    EMPTY_CART} from '../action/types';
+    EMPTY_CART} from '../actions/types';
 
 const initState = {
     cart: []
@@ -36,7 +36,7 @@ export default function(state = initState, action) {
         }
         newCart.push(newSelection);
         newState.cart = newCart;
-        break;
+        return newState;
   
       case REMOVE_FROM_CART:
 
@@ -44,7 +44,7 @@ export default function(state = initState, action) {
           return product.id !== action.id
         });
         newState.cart = newCart;
-        break;
+        return newState;
   
       case INCREASE_TIMES:
 
@@ -54,7 +54,7 @@ export default function(state = initState, action) {
         newProduct.times = ++newProduct.times;
         newCart.push(newProduct);
         newState.cart = newCart;
-        break;
+        return newState;
   
       case DECREASE_TIMES:
 
@@ -67,12 +67,13 @@ export default function(state = initState, action) {
         if (newProduct.times >= 1) newProduct.times = --newProduct.times;
         newCart.push(newProduct);
         newState.cart = newCart; 
-        break;
+        return newState;
   
       case EMPTY_CART:
         newState.cart = [];
-        break;
+        return newState;
+      
+      default:
+        return state;
     }
-
-    return newState;
 }
