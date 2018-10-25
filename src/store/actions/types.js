@@ -1,0 +1,9 @@
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const INCREASE_TIMES = 'INCREASE_TIMES';
+export const DECREASE_TIMES = 'DECREASE_TIMES';
+export const EMPRTY_CART = 'EMPTY_CART';
+export const SHOW_CART_LIST = 'SHOW_CART_LIST';
+export const HIDE_CART_LIST = 'HIDE_CART_LIST';
+export const SHOW_FORM = 'SHOW_FORM';
+export const HIDE_FORM = 'HIDE_FORM';
