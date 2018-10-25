@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import Navbar from './components/Navbar';
-import Product from './components/Product';
-import CartList from './components/CartList';
-import Form from './components/Form';
+import Navbar from './Navbar';
+import Product from './Product';
+import CartList from './CartList';
+import Form from './Form';
 
 class App extends Component {
 

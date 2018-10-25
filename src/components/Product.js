@@ -6,8 +6,8 @@ import { addToCart } from '../store/actions/cartActions';
 class Product extends Component {
 
   handleClick = () => {
-    let {id, title, price} = this.props;
-    this.props.addToCart(id,title,price);
+    let {id, title, price, times} = this.props;
+    this.props.addToCart({id,title,price,times});
   }
   
   render() {
@@ -16,7 +16,7 @@ class Product extends Component {
       <div className="col s12 m3">
         <div className="card small">
           <div className="card-image">
-            <img src={require(`../static/media/${title}.jpg`)} alt="loading..."/>
+            <img src={require(`../static/products/${title}.jpg`)} alt="loading..."/>
             <h3 className="card-title">{title}</h3>
           </div>
           <div className="card-content">
@@ -41,14 +41,5 @@ const mapStateToProps = (state) => {
     cart: state.cart
   }
 }
-
-/*const mapDispatchToProps = (dispatch) => {
-  return {
-    addToCart: (id,title,price,times) => { dispatch({
-      type: "ADD_TO_CART",
-      id, title, price, times})
-    }
-  }
-}*/
 
 export default connect(mapStateToProps, { addToCart })(Product);

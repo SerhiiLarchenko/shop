@@ -4,10 +4,10 @@ import {ADD_TO_CART,
         DECREASE_TIMES, 
         EMPTY_CART} from './types';
 
-export const addToCart = (id, title, price, times) => (dispatch) => {
+export const addToCart = (productData) => (dispatch) => {
     dispatch({
         type: ADD_TO_CART,
-        payload: id, title, price, times
+        payload: productData
     })
 }
 
@@ -18,17 +18,17 @@ export const removeFromCart = (id) => (dispatch) => {
     })
 }
 
-export const increaseTimes = (times, id) => (dispatch) => {
+export const increaseTimes = (productData) => (dispatch) => {
     dispatch({
         type: INCREASE_TIMES,
-        payload: times, id
+        payload: productData
     })
 }
 
-export const decreaseTimes = (times, id) => (dispatch) => {
+export const decreaseTimes = (productData) => (dispatch) => {
     dispatch({
         type: DECREASE_TIMES,
-        payload: times, id
+        payload: productData
     })
 }
 

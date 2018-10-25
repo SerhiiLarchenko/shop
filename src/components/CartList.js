@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ListElement from './ListElement';
+import ListElement from './ListElement.js';
 
 import { showForm, hideCartList } from '../store/actions/displayActions';
 
@@ -58,20 +58,5 @@ const mapStateToProps = (state) => {
 
   }
 }
-
-/*const mapDispatchToProps = (dispatch) => {
-  return {
-    hideCartList: () => {
-       dispatch ({
-           type: "HIDE_CART_LIST"
-       })
-    },
-    showForm: () => {
-       dispatch ({
-         type: "SHOW_FORM"
-       })
-    }
-}
-}*/
 
 export default connect(mapStateToProps, { hideCartList, showForm })(CartList);

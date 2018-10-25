@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { increaseTimes, decreaseTimes, removeFromCart } from '../../store/actions/cartActions'
-
-
-import './style.css';
+import { increaseTimes, decreaseTimes, removeFromCart } from '../store/actions/cartActions'
 
 class ListElement extends Component {
 
@@ -27,7 +24,7 @@ class ListElement extends Component {
         console.log(this.props);
         return (
             <li className="cart-element clearfix">
-                <img src={require(`../../static/media/${title}.jpg`)} alt="loading..."/>
+                <img src={require(`../static/products/${title}.jpg`)} alt="loading..."/>
                 <ul>
                     <li>{title}</li>
                     <li>Quantity: {times}</li>
@@ -42,23 +39,5 @@ class ListElement extends Component {
         )
     }
 }
-
-/*
-const mapDispatchToState = (dispatch) => {
-    return {
-        increaseTimes: (times,id) => {dispatch({
-            type: "INCREASE_TIMES",
-            times, id})
-        },
-        decreaseTimes: (times,id) => {dispatch({
-            type: "DECREASE_TIMES",
-            times, id})
-        },
-        removeFromCart: (id) => {dispatch({
-            type: "REMOVE_FROM_CART",
-            id
-        })}
-    }
-}*/
 
 export default connect(null, {increaseTimes, decreaseTimes, removeFromCart})(ListElement);
