@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { showCartList } from '../store/actions/displayActions';
-
-
+import { toggleCartList } from '../store/actions/displayActions';
 
 class CartIcon extends Component {
 
     handleClick = () => {
-        this.props.showCartList();
+        this.props.toggleCartList(!this.props.display);
+        
     }
 
     render() {
@@ -25,23 +24,11 @@ class CartIcon extends Component {
 }
 
 const mapStateToProps = (state) => {
-
+    
     return {
-      cart: state.cart
+      cart: state.cart,
+      display: state.display.cartIsShown
     }
 }
 
-/*
-const mapDispatchToProps = (dispatch) => {
-
-    return {
-        showCartList: () => {
-            dispatch ({
-                type: "SHOW_CART_LIST"
-            })
-        }
-    }
-}*/
-
-
-export default connect(mapStateToProps, {showCartList})(CartIcon);
+export default connect(mapStateToProps, { toggleCartList })(CartIcon);

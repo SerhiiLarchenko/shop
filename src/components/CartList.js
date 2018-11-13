@@ -2,22 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ListElement from './ListElement.js';
-
-import { showForm, hideCartList } from '../store/actions/displayActions';
+import { toggleCartList, toggleForm } from '../store/actions/displayActions.js';
 
 class CartList extends Component {
 
-  handleClick = () => {
-    this.props.hideCartList();
+  hideCart = () => {
+    this.props.toggleCartList(false);
   }
 
-  showForm = () => {
-    this.props.showForm();
+  openForm = () => {
+    this.props.toggleForm(true);
   }
 
   render() {
-    console.log(this.props);
-    const list = this.props.cart.cart.map((product) => {
+
+    const list = this.props.cart.map((product) => {
       return (
         <ListElement 
           key={product.id}
@@ -41,9 +40,9 @@ class CartList extends Component {
                     overflowY: "scroll",
                     maxHeight: "500px"}}
         >
-        <h6>In cart:<button onClick={this.handleClick}>X</button></h6>
+        <h6>In cart:<button onClick={this.hideCart}>X</button></h6>
         {list}
-        <button onClick={this.showForm}>Buy</button>
+        <button onClick={this.openForm}>Buy</button>
       </div>) : (
         <div></div>
       )
@@ -51,12 +50,12 @@ class CartList extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { 
   return {
     cart: state.cart,
-    isShown: state.cartIsShown
+    isShown: state.display.cartIsShown
 
   }
 }
 
-export default connect(mapStateToProps, { hideCartList, showForm })(CartList);
+export default connect(mapStateToProps, { toggleCartList, toggleForm })(CartList);

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+
+import { loadProducts } from '../store/actions/loadAction';
 
 import Navbar from './Navbar';
 import Product from './Product';
@@ -9,19 +11,15 @@ import Form from './Form';
 class App extends Component {
 
   state = {
-    products : []
+    loaded: false
   }
 
   componentWillMount() {
-    axios.get('http://localhost:8000/products').then( res => {
-      this.setState({
-        products: res.data.products
-      })
-    })
+    this.props.loadProducts(this.setState.bind(this));
   }
 
   render() {
-    const productList = this.state.products.map(product => {
+    const productList = this.props.products.map(product => {
       return (
         <Product 
           title={product.title} 
@@ -34,6 +32,7 @@ class App extends Component {
     });
 
     return (
+      this.state.loaded ?
       <div className="App">
         <Navbar />
         <CartList />
@@ -43,9 +42,16 @@ class App extends Component {
             {productList}
           </div>
         </div>
-      </div>
+      </div> :
+      <div>loading...</div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    products: state.products
+  }
+}
+
+export default connect(mapStateToProps, { loadProducts })(App);

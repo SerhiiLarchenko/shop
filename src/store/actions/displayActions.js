@@ -1,21 +1,16 @@
-import { SHOW_CART_LIST,
-    HIDE_CART_LIST, 
-    SHOW_FORM, 
-    HIDE_FORM } from '../actions/types';
+import { TOGGLE_CART_LIST, TOGGLE_FORM } from './types';
 
-export const showCartList = (dispatch) => {
-    dispatch({type: SHOW_CART_LIST})
+export const toggleCartList = toggle => dispatch => {
+
+    dispatch({
+        type: TOGGLE_CART_LIST,
+        toggle
+    })
 }
 
-export const hideCartList = (dispatch) => {
-    dispatch({type: HIDE_CART_LIST})
+export const toggleForm = toggle => dispatch => {
+    dispatch({
+        type: TOGGLE_FORM,
+        toggle
+    })
 }
-
-export const showForm = (dispatch) => {
-    dispatch({type: SHOW_FORM})
-}
-
-export const hideForm = (dispath) => {
-    dispath({type: HIDE_FORM})
-}
-

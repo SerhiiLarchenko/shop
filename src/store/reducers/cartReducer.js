@@ -1,79 +1,60 @@
-import {ADD_TO_CART, 
-    REMOVE_FROM_CART, 
-    INCREASE_TIMES, 
-    DECREASE_TIMES, 
-    EMPTY_CART} from '../actions/types';
+import {ADD_TO_CART, REMOVE_FROM_CART, CHANGE_TIMES, EMPTY_CART} from '../actions/types';
 
-const initState = {
-    cart: []
-}
+const initState = [];
 
 export default function(state = initState, action) {
-    const newState = {...state};
-    const newCart = newState.cart.length ? [...newState.cart] : [];
-    const match = newCart.find((product)=>{
-      return product.id === action.id;
-    });
-    let newProduct;
-    if (match) newProduct = {...match};
-  
+    
    switch (action.type) {
 
       case ADD_TO_CART:
-        
+
+        let match = state.find((product) => {
+          return product.id === action.product.id;
+        });
+
         let times = 1;
+        let newState = [...state];
+
         if (match) {
-          newCart = newCart.filter((product) => {
-            return product.id !== action.id;
+          newState = newState.filter((product) => {
+            return product.id !== action.product.id;
           })
           times = match.times > 0 ? match.times + 1 : 1;
         }
-        const newSelection = {
-            id: action.id,
-            title: action.title,
-            price: action.price,
-            times: times
-        }
-        newCart.push(newSelection);
-        newState.cart = newCart;
+        
+        const newSelection = {...action.product, times};
+        
+        newState.push(newSelection);
+
         return newState;
   
       case REMOVE_FROM_CART:
 
-        newCart = newState.cart.filter(product => {
+        return state.filter(product => {
           return product.id !== action.id
         });
-        newState.cart = newCart;
-        return newState;
   
-      case INCREASE_TIMES:
+      case CHANGE_TIMES:
+        console.log(action.sign);
+        let j = 1;
+        if (action.sign) j = action.product.times + 1;
+        else if (action.product.times > 1) {
+          j = action.product.times - 1;
+          console.log(action.product.times, j);
+        }
+        let test =  state.filter(product => {
+          return product.id !== action.product.id;
+        });
+        let newObj = {...action.product, times: j};
+        test.push(newObj);
+        return test;
 
-        newCart = newState.cart.filter(product => {
-          return product.id !== action.id;
-        })
-        newProduct.times = ++newProduct.times;
-        newCart.push(newProduct);
-        newState.cart = newCart;
-        return newState;
-  
-      case DECREASE_TIMES:
-
-        let match = newState.cart.find(product => {
-          return product.id === action.id;
-        })
-        let newCart = newState.cart.filter(product => {
-          return product.id !== action.id;
-        })
-        if (newProduct.times >= 1) newProduct.times = --newProduct.times;
-        newCart.push(newProduct);
-        newState.cart = newCart; 
-        return newState;
-  
       case EMPTY_CART:
-        newState.cart = [];
-        return newState;
+
+        return [];
       
       default:
+
         return state;
     }
 }

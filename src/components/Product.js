@@ -6,11 +6,12 @@ import { addToCart } from '../store/actions/cartActions';
 class Product extends Component {
 
   handleClick = () => {
-    let {id, title, price, times} = this.props;
-    this.props.addToCart({id,title,price,times});
+    const { title, price, times, id} = this.props;
+    this.props.addToCart({title,price,times,id});
   }
-  
+
   render() {
+
     const { title, price } = this.props;
     return (  
       <div className="col s12 m3">

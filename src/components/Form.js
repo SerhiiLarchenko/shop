@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import { hideForm } from '../store/actions/displayActions';
+import { toggleForm, toggleCartList } from '../store/actions/displayActions';
 import { emptyCart } from '../store/actions/cartActions';
 
+const orderAPI = 'http://localhost:8000/order';
+
 class Form extends Component {
+
+  handleClick = () => {
+    this.props.toggleForm(false);
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -16,24 +22,21 @@ class Form extends Component {
       cart: this.props.cart
     }
   
-    axios.post('http://localhost:8000/order', order).then(res => {
+    axios.post(orderAPI, order).then(res => {
       console.log(res);
     });
 
     this.props.emptyCart();
-    this.props.hideForm();
+    this.props.toggleForm(false);
+    this.props.toggleCartList(false);
     
-  }
-
-  hideForm = () => {
-    this.props.hideForm();
   }
 
   render() {
 
-    const totalPrice = this.props.cart.cart.reduce((sum, next)=> sum + next.price*100*next.times/100, 0);
+    const totalPrice = this.props.cart.reduce((sum, next)=> sum + next.price*100*next.times/100, 0);
   
-    return this.props.formIsShown ? (
+    return this.props.isShown ? (
         <div style={{
           width: "300px",
           position: "fixed",
@@ -48,7 +51,7 @@ class Form extends Component {
             <input type="email" name="email"/>
             <button >Send</button>
           </form>
-          <button onClick={this.hideForm}>close</button>
+          <button onClick={this.handleClick}>close</button>
         </div>
     ) : (<></>);
   }
@@ -57,20 +60,8 @@ class Form extends Component {
 const mapStateToProps = (state) => {
   return {
     cart: state.cart,
-    formIsShown: state.formIsShown
+    isShown: state.display.formIsShown
   }
 }
 
-
-/*const mapDispatchToState = dispatch => {
-  return {
-    emptyCart: () => {
-      dispatch({type: "EMPTY_CART"})
-    },
-    hideForm: () => {
-      dispatch({type: "HIDE_FORM"})
-    }
-  }
-}*/
-
-export default connect(mapStateToProps, { hideForm, emptyCart })(Form);
+export default connect(mapStateToProps, { toggleForm, toggleCartList, emptyCart })(Form);
