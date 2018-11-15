@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ListElement from './ListElement.js';
-import { toggleCartList, toggleForm } from '../store/actions/displayActions.js';
+import { toggleCartList, toggleForm } from '../store/actions/displayActions';
+import { emptyCart } from '../store/actions/cartActions';
 
 class CartList extends Component {
 
@@ -12,6 +13,10 @@ class CartList extends Component {
 
   openForm = () => {
     this.props.toggleForm(true);
+  }
+
+  empty = () => {
+    this.props.emptyCart();
   }
 
   render() {
@@ -30,19 +35,16 @@ class CartList extends Component {
 
     return (
       this.props.isShown ? (
-        <div className="collection"
-          style = {{width: "320px",
-                    position: "fixed",
-                    top: "62px",
-                    right:"10px",
-                    zIndex: "1000",
-                    backgroundColor: "white",
-                    overflowY: "scroll",
-                    maxHeight: "500px"}}
-        >
-        <h6>In cart:<button onClick={this.hideCart}>X</button></h6>
-        {list}
-        <button onClick={this.openForm}>Buy</button>
+        <div className="cart">
+        <ul>
+          {list}
+        </ul>
+        <div>
+          <button className='btn btn--narrow' onClick={this.openForm}>buy</button>
+          <button className='btn btn--narrow' onClick={this.empty}>empty</button>
+          <button className='btn btn--narrow' onClick={this.hideCart}>close</button>
+          
+        </div>
       </div>) : (
         <div></div>
       )
@@ -58,4 +60,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { toggleCartList, toggleForm })(CartList);
+export default connect(mapStateToProps, { toggleCartList, toggleForm, emptyCart })(CartList);

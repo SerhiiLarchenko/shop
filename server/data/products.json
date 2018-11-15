@@ -1,5 +1,30 @@
 {
     "products": [
+
+        {
+            "id": 391803884,
+            "title": "blueberry",
+            "price": 11.22
+        },
+
+        {
+            "id": 4524854557,
+            "title": "pineapple",
+            "price": 8.35
+        },
+
+        {
+            "id": 19467646478,
+            "title": "lemon",
+            "price": 0.86
+        },
+
+        {
+            "id": 49857209487,
+            "title": "kiwi",
+            "price": 5.45
+        },
+
         {
             "id": 718362844,
             "title": "orange",
@@ -33,7 +58,7 @@
         {
             "id": 489358743,
             "title": "watermelon",
-            "price": 6.00
+            "price": 5.99
         },
 
         {
@@ -46,32 +71,7 @@
             "id": 98452984,
             "title": "blackberry",
             "price": 14.12
-        },
-
-        {
-            "id": 391803884,
-            "title": "blueberry",
-            "price": 11.22
-        },
-
-        {
-            "id": 4524854557,
-            "title": "pineapple",
-            "price": 8.35
-        },
-
-        {
-            "id": 19467646478,
-            "title": "lemon",
-            "price": 0.86
-        },
-
-        {
-            "id": 49857209487,
-            "title": "kiwi",
-            "price": 5.45
         }
-
-        
+              
     ]
 }

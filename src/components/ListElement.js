@@ -18,17 +18,17 @@ class ListElement extends Component {
     render() {
         const { title, price, times} = this.props;;
         return (
-            <li className="cart-element clearfix">
-                <img src={require(`../static/products/${title}.jpg`)} alt="loading..."/>
+            <li className='cart-product'>
+                <img className='cart-product__image' src={require(`../static/products/${title}.jpg`)} alt="loading..."/>
                 <ul>
                     <li>{title}</li>
-                    <li>Quantity: {times}</li>
-                    <li>Total: {price*100*times/100}</li>
+                    <li>quantity: {times}</li>
+                    <li>total: {price*100*times/100}</li>
                 </ul>
                 <div>
-                    <button onClick={this.plusOrMinus.bind(null,true)}>+</button>
-                    <button onClick={this.plusOrMinus.bind(null,false)}>-</button>
-                    <button onClick={this.removeProduct}>Delete</button>
+                    <button className='btn  btn--narrow' onClick={this.plusOrMinus.bind(null,true)}>+</button>
+                    <button className='btn  btn--narrow' onClick={this.plusOrMinus.bind(null,false)}>-</button>
+                    <button className='btn  btn--narrow' onClick={this.removeProduct}>x</button>
                 </div>
             </li>
         )

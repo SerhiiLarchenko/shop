@@ -17,7 +17,9 @@ class CartIcon extends Component {
         }
         return (
             <>
-                <span onClick={this.handleClick}>In cart: {inCart}</span>
+                <div onClick={this.handleClick} className='cart-icon'>
+                    <div className='cart-icon__counter'>{inCart}</div>
+                </div>
             </>
         )
     }

@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import Product from './Product';
 import CartList from './CartList';
 import Form from './Form';
+import CartIcon from './CartIcon';
 
 class App extends Component {
 
@@ -33,8 +34,9 @@ class App extends Component {
 
     return (
       this.state.loaded ?
-      <div className="App">
+      <div className="page">
         <Navbar />
+        <CartIcon />
         <CartList />
         <Form />
         <div className="container">

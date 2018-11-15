@@ -14,24 +14,15 @@ class Product extends Component {
 
     const { title, price } = this.props;
     return (  
-      <div className="col s12 m3">
-        <div className="card small">
-          <div className="card-image">
-            <img src={require(`../static/products/${title}.jpg`)} alt="loading..."/>
-            <h3 className="card-title">{title}</h3>
-          </div>
-          <div className="card-content">
-            <p>{`Price: ${price} USD`}</p>
-          </div>
-          <div className="card-action">
-            <button 
-              className="waves-effect waves-light btn center"
-              onClick={this.handleClick}
-            >
-              Add to cart
-            </button>
-          </div>
-        </div>
+      <div className="row__col row__col--three">
+      <div className="card">
+        <img className='card_title' src={require(`../static/products/${title}.jpg`)} alt="loading..."/>
+        <h3 className='card_title'>{title}</h3>
+        <p className='card__info'>{`$${price}`}</p>
+        <button className="btn card__btn" onClick={this.handleClick}>
+          add to cart
+        </button>
+       </div> 
       </div>
     )
   }
