@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import { loadProducts } from '../store/actions/loadAction';
 
-import Navbar from './Navbar';
 import Product from './Product';
 import CartList from './CartList';
 import Form from './Form';
@@ -35,7 +34,9 @@ class App extends Component {
     return (
       this.state.loaded ?
       <div className="page">
-        <Navbar />
+        <header className="header">
+          <h1>fresh fruits</h1>
+        </header>
         <CartIcon />
         <CartList />
         <Form />
