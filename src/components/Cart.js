@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ListElement from './ListElement.js';
+import CartProduct from './CartProduct.js';
 import { toggleCartList, toggleForm } from '../store/actions/displayActions';
 import { emptyCart } from '../store/actions/cartActions';
 
-class CartList extends Component {
+class Cart extends Component {
 
   hideCart = () => {
     this.props.toggleCartList(false);
@@ -23,7 +23,7 @@ class CartList extends Component {
 
     const list = this.props.cart.map((product) => {
       return (
-        <ListElement 
+        <CartProduct 
           key={product.id}
           title={product.title}
           price={product.price}
@@ -60,4 +60,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { toggleCartList, toggleForm, emptyCart })(CartList);
+export default connect(mapStateToProps, { toggleCartList, toggleForm, emptyCart })(Cart);

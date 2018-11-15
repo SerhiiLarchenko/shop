@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { loadProducts } from '../store/actions/loadAction';
 
 import Product from './Product';
-import CartList from './CartList';
+import Cart from './Cart';
 import Form from './Form';
 import CartIcon from './CartIcon';
 
@@ -38,7 +38,7 @@ class App extends Component {
           <h1>fresh fruits</h1>
         </header>
         <CartIcon />
-        <CartList />
+        <Cart />
         <Form />
         <div className="container">
           <div className="row">
