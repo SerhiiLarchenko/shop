@@ -13,16 +13,26 @@ class Product extends Component {
   render() {
 
     const { title, price } = this.props;
-    return (  
+
+    return (
       <div className="row__col row__col--three">
-      <div className="card">
-        <img className='card_title' src={require(`../static/products/${title}.jpg`)} alt="loading..."/>
-        <h3 className='card_title'>{title}</h3>
-        <p className='card__info'>{`$${price}`}</p>
-        <button className="btn card__btn" onClick={this.handleClick}>
-          add to cart
-        </button>
-       </div> 
+        <div className="card">
+          <img 
+            className='card_title' 
+            src={require(`../static/products/${title}.jpg`)} 
+            alt="loading..."/>
+          <h3 className='card_title'>
+            {title}
+          </h3>
+          <p className='card__info'>
+            {`$${price}`}
+          </p>
+          <button 
+            className="btn card__btn" 
+            onClick={this.handleClick}>
+            add to cart
+          </button>
+        </div>
       </div>
     )
   }

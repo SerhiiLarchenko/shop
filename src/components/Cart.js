@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import CartProduct from './CartProduct.js';
-import { toggleCartList, toggleForm } from '../store/actions/displayActions';
+import { 
+  toggleCartList, toggleForm 
+} from '../store/actions/displayActions';
 import { emptyCart } from '../store/actions/cartActions';
 
 class Cart extends Component {
@@ -34,20 +36,27 @@ class Cart extends Component {
     });
 
     return (
-      this.props.isShown ? (
+      this.props.isShown ? 
         <div className="cart">
-        <ul>
-          {list}
-        </ul>
-        <div>
-          <button className='btn btn--narrow' onClick={this.openForm}>buy</button>
-          <button className='btn btn--narrow' onClick={this.empty}>empty</button>
-          <button className='btn btn--narrow' onClick={this.hideCart}>close</button>
-          
-        </div>
-      </div>) : (
-        <div></div>
-      )
+          <ul>{list}</ul>
+          <div>
+            <button 
+              className='btn btn--narrow' 
+              onClick={this.openForm}>
+              buy
+            </button>
+            <button 
+              className='btn btn--narrow' 
+              onClick={this.empty}>
+              empty
+            </button>
+            <button 
+              className='btn btn--narrow' 
+              onClick={this.hideCart}>
+              close
+            </button>
+          </div>
+      </div> : null
     )
   }
 }
@@ -56,8 +65,9 @@ const mapStateToProps = (state) => {
   return {
     cart: state.cart,
     isShown: state.display.cartIsShown
-
   }
 }
 
-export default connect(mapStateToProps, { toggleCartList, toggleForm, emptyCart })(Cart);
+export default connect(mapStateToProps, { 
+  toggleCartList, toggleForm, emptyCart 
+})(Cart);

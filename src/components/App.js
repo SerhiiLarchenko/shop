@@ -19,6 +19,7 @@ class App extends Component {
   }
 
   render() {
+    
     const productList = this.props.products.map(product => {
       return (
         <Product 
@@ -38,13 +39,13 @@ class App extends Component {
           <h1>fresh fruits</h1>
         </header>
         <CartIcon />
-        <Cart />
-        <Form />
         <div className="container">
           <div className="row">
             {productList}
           </div>
         </div>
+        <Cart />
+        <Form />
       </div> :
       <div>loading...</div>
     );
