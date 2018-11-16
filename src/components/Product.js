@@ -18,10 +18,10 @@ class Product extends Component {
       <div className="row__col row__col--three">
         <div className="card">
           <img 
-            className='card_title' 
+            className='card__image' 
             src={require(`../static/products/${title}.jpg`)} 
             alt="loading..."/>
-          <h3 className='card_title'>
+          <h3 className='card__title'>
             {title}
           </h3>
           <p className='card__info'>
