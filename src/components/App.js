@@ -6,6 +6,7 @@ import { loadProducts } from '../store/actions/loadAction';
 import Product from './Product';
 import Cart from './Cart';
 import Form from './Form';
+import Header from './Header';
 import CartIcon from './CartIcon';
 import Loader from './Loader';
 
@@ -36,9 +37,7 @@ class App extends Component {
     return (
       this.state.loaded ?
       <div className="page">
-        <header className="header">
-          <h1>fresh fruits</h1>
-        </header>
+        <Header />
         <CartIcon />
         <div className="container">
           <div className="row">
