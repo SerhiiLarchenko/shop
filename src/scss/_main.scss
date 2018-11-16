@@ -1,3 +1,11 @@
+.blank-page {
+	align-items: center;
+	background-image: $second-bg;
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+}
+
 .page {
 	background-image: $main-bg;
 	color: $main-color;

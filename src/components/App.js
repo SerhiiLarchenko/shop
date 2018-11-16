@@ -7,6 +7,7 @@ import Product from './Product';
 import Cart from './Cart';
 import Form from './Form';
 import CartIcon from './CartIcon';
+import Loader from './Loader';
 
 class App extends Component {
 
@@ -19,7 +20,7 @@ class App extends Component {
   }
 
   render() {
-    
+
     const productList = this.props.products.map(product => {
       return (
         <Product 
@@ -47,7 +48,7 @@ class App extends Component {
         <Cart />
         <Form />
       </div> :
-      <div>loading...</div>
+      <Loader />
     );
   }
 }
