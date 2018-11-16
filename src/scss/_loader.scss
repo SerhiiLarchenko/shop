@@ -1,8 +1,10 @@
 .lds-roller {
     display: inline-block;
-    position: relative;
+    position: fixed;
     width: 64px;
     height: 64px;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
   }
   .lds-roller div {
     animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
@@ -15,7 +17,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #fff;
+    background: #86cac6;
     margin: -3px 0 0 -3px;
   }
   .lds-roller div:nth-child(1) {

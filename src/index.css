@@ -118,14 +118,6 @@ img {
   font-weight: bold;
   font-style: normal;
 }
-.blank-page {
-  align-items: center;
-  background-image: url("./static/restaurant.png");
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-}
-
 .page {
   background-image: url("./static/restaurant_icons.png");
   color: #fff;
@@ -278,9 +270,11 @@ img {
 
 .lds-roller {
   display: inline-block;
-  position: relative;
+  position: fixed;
   width: 64px;
   height: 64px;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
 }
 
 .lds-roller div {
@@ -295,7 +289,7 @@ img {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #fff;
+  background: #86cac6;
   margin: -3px 0 0 -3px;
 }
 
