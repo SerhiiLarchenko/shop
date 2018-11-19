@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "cors": "^2.8.5",
-    "joi": "^14.0.0",
+    "joi": "^14.0.6",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",

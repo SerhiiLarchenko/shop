@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
+const Joi = require('joi');
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -23,15 +24,31 @@ app.get('/products', (req, res, next) => {
 });
 
 app.post('/order', (req, res, next) => {
+
+	const schema = Joi.object().keys({
+		name: Joi.string().alphanum().min(3).max(30).required(),
+		email: Joi.string().email().required(),
+		cart: Joi.array().min(1).required()
+	});
+
+	const validation = Joi.validate(req.body, schema);
+
+	if (validation.error) {
+		const error = new Error(validation.error.details[0].message);
+		error.status = 400;
+		next(error);
+		return;
+	}
+
 	const orderPath = `${__dirname}/data/orders.json`;
 	const {name, email, cart} = req.body;
+	
 	fs.readFile(orderPath, (error, data) => {
 		if (error) next(error);
 		else if (data) {
 			const orders = JSON.parse(data.toString());
 			orders.push({name, email, cart});
-		  fs.writeFile(orderPath,
-		   JSON.stringify(orders), error => {
+		  fs.writeFile(orderPath, JSON.stringify(orders), error => {
 				 if (error) next(error);
 				 else {
 					 console.log('A new order is received.');
@@ -39,11 +56,7 @@ app.post('/order', (req, res, next) => {
 				 }
 			 }
 			);
-		} else {
-				const error = new Error('Not found');
-				error.status = 404;
-				next(error);
-		}
+		} else next(new Error('The orders file is not read.'));
 	});
 });
 
