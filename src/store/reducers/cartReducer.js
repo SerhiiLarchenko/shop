@@ -1,4 +1,7 @@
-import {ADD_TO_CART, REMOVE_FROM_CART, CHANGE_TIMES, EMPTY_CART} from '../actions/types';
+import {ADD_TO_CART, 
+        REMOVE_FROM_CART, 
+        CHANGE_TIMES, 
+        EMPTY_CART} from '../actions/types';
 
 const initState = [];
 
@@ -7,54 +10,51 @@ export default function(state = initState, action) {
    switch (action.type) {
 
       case ADD_TO_CART:
+      case CHANGE_TIMES:
 
-        let match = state.find((product) => {
+        const newState = [...state];
+        const newProduct = {...action.product};
+        const match = state.find((product) => {
           return product.id === action.product.id;
         });
-
-        let times = 1;
-        let newState = [...state];
-
+        
         if (match) {
-          newState = newState.filter((product) => {
-            return product.id !== action.product.id;
-          })
-          times = match.times > 0 ? match.times + 1 : 1;
+          const index = state.indexOf(match);
+          newState[index] = newProduct;
+        } else {
+          newState.push(newProduct);
         }
-        
-        const newSelection = {...action.product, times};
-        
-        newState.push(newSelection);
 
-        return newState;
-  
+        switch (action.type) {
+
+          case ADD_TO_CART:
+            
+            newProduct.times = match && match.times ? 
+              match.times + 1 : 1;
+            return newState;
+          
+          case CHANGE_TIMES: 
+
+            let { times } = action.product;
+            newProduct.times = action.sign ? 
+              ++times : times > 1 ? --times : 1;
+            return newState;
+          
+          default:
+            return newState;
+
+        }
+
       case REMOVE_FROM_CART:
 
         return state.filter(product => {
           return product.id !== action.id
         });
-  
-      case CHANGE_TIMES:
-        console.log(action.sign);
-        let j = 1;
-        if (action.sign) j = action.product.times + 1;
-        else if (action.product.times > 1) {
-          j = action.product.times - 1;
-          console.log(action.product.times, j);
-        }
-        let test =  state.filter(product => {
-          return product.id !== action.product.id;
-        });
-        let newObj = {...action.product, times: j};
-        test.push(newObj);
-        return test;
 
       case EMPTY_CART:
-
         return [];
       
       default:
-
         return state;
     }
 }
