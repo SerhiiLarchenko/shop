@@ -172,6 +172,11 @@ img {
   width: 360px;
   z-index: 10;
 }
+.cart__empty {
+  font-size: 22px;
+  line-height: 2;
+  padding: 20px 0;
+}
 .cart .cart-product {
   align-items: center;
   display: flex;
@@ -187,8 +192,8 @@ img {
 }
 
 .sub-form {
-  --w: 300px;
-  --h: 200px;
+  --w: 320px;
+  --h: 260px;
   background-image: url("./static/restaurant.png");
   border-radius: 3px;
   border: 1px solid #fff;
@@ -205,6 +210,11 @@ img {
   width: var(--w);
   z-index: 20;
 }
+.sub-form__warning {
+  color: #ec0d0d;
+  font-size: 14px;
+  padding-top: 5px;
+}
 
 .input {
   border-radius: 3px;
@@ -214,7 +224,8 @@ img {
   height: 30px;
   line-height: 30px;
   outline: none;
-  width: 200px;
+  padding: 0 5px;
+  width: 260px;
 }
 .input:focus {
   border: 1px solid #666;

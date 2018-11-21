@@ -1,20 +1,29 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
+import { toggleForm } from '../store/actions/displayActions';
 import { 
   changeTimes, removeFromCart, emptyCart
 } from '../store/actions/cartActions';
 
 
-class ListElement extends Component {
+class ListElement extends PureComponent {
+
+  hideForm = () => {
+    if (this.props.cart.length === 1) {
+      this.props.toggleForm(false);
+    } 
+  }
 
   removeProduct = () => {
     this.props.removeFromCart(this.props.id);
+    this.hideForm();
   }
 
   plusOrMinus = (sign) => {
      const {title, price, id, times} = this.props; 
      this.props.changeTimes({title,price,id,times}, sign);
+     this.hideForm();
   }
     
   render() {
@@ -30,7 +39,7 @@ class ListElement extends Component {
         <ul>
           <li>{title}</li>
           <li>quantity: {times}</li>
-          <li>total: {price*100*times/100}</li>
+          <li>total: {Math.round(price*times*100)/100}</li>
         </ul>
         <div>
           <button 
@@ -54,6 +63,12 @@ class ListElement extends Component {
   }
 }
 
-export default connect(null, { 
-  changeTimes, removeFromCart, emptyCart 
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart
+  }
+}
+
+export default connect(mapStateToProps, { 
+  changeTimes, removeFromCart, emptyCart, toggleForm 
 })(ListElement);

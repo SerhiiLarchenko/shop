@@ -9,12 +9,23 @@ import { emptyCart } from '../store/actions/cartActions';
 
 class Cart extends Component {
 
+  state = {
+    msg: 'the cart is empty'
+  }
+
   hideCart = () => {
     this.props.toggleCartList(false);
+    this.setState({
+      msg: 'the cart is empty'
+    })
   }
 
   openForm = () => {
-    this.props.toggleForm(true);
+    if (this.props.cart.length)
+      this.props.toggleForm(true);
+    else this.setState({
+      msg: 'please, add at least one product to make order'
+    })
   }
 
   empty = () => {
@@ -23,22 +34,26 @@ class Cart extends Component {
 
   render() {
 
-    const list = this.props.cart.map((product) => {
-      return (
-        <CartProduct 
-          key={product.id}
-          title={product.title}
-          price={product.price}
-          times={product.times}
-          id={product.id}
-        />
-      )
-    });
+    const content = this.props.cart.length ?
+      this.props.cart.map((product) => {
+        return (
+          <CartProduct 
+            key={product.id}
+            title={product.title}
+            price={product.price}
+            times={product.times}
+            id={product.id}
+          />
+        )
+      }) : 
+      <div className='cart__empty'>
+        {this.state.msg}
+      </div>
 
     return (
       this.props.isShown ? 
         <div className="cart">
-          <ul>{list}</ul>
+          <ul>{content}</ul>
           <div>
             <button 
               className='btn btn--narrow' 

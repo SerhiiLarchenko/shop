@@ -51,6 +51,11 @@
 	top: 69px;
 	width: 360px;
 	z-index: 10;
+	&__empty {
+		font-size: 22px;
+		line-height: 2;
+		padding: 20px 0;
+	}
 	.cart-product {
 		align-items: center;
 		display: flex;
@@ -67,8 +72,8 @@
 }
 
 .sub-form {
-	--w: 300px;
-	--h: 200px;
+	--w: 320px;
+	--h: 260px;
 	background-image: $second-bg;
 	border-radius: 3px;
 	border: $main-border;
@@ -84,6 +89,11 @@
 	top: calc(50% - var(--h)/2);
 	width: var(--w);
 	z-index: 20;
+	&__warning {
+		color:rgb(236, 13, 13);
+		font-size: 14px;
+		padding-top: 5px;
+	}
 }
 
 .input {
@@ -94,7 +104,8 @@
 	height: 30px;
 	line-height: 30px;
 	outline: none;
-	width: 200px;
+	padding: 0 5px;
+	width: 260px;
 	&:focus {
 		border: 1px solid #666;
 	}
