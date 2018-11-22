@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { loadProducts } from '../store/actions/loadAction';
+import { alertError } from '../store/actions/alertActions';
+import { toggleAlert } from '../store/actions/displayActions';
 
 import Product from './Product';
 import Loader from './Loader';
+import Alert from './Alert';
 
 class Shelf extends Component {
 
@@ -12,8 +15,16 @@ class Shelf extends Component {
     loaded: false
   }
 
+  showAlert = (error) => {
+    this.props.alertError(error);
+    this.props.toggleAlert(true);
+  }
+
   componentWillMount() {
-    this.props.loadProducts(this.setState.bind(this));
+    this.props.loadProducts(
+      this.setState.bind(this),
+      this.showAlert
+    );
   }
 
   render() {
@@ -36,16 +47,18 @@ class Shelf extends Component {
         <div className="row">
         {productList}
         </div>
-      </div> :
-      <Loader />
+      </div> : this.props.alertIsShown ?
+        <Alert/> : <Loader />
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-  products: state.products
+    products: state.products,
+    alertIsShown: state.display.alertIsShown
   }
 }
 
-export default connect(mapStateToProps, { loadProducts })(Shelf);
+export default connect(mapStateToProps, { 
+  loadProducts, alertError, toggleAlert })(Shelf);

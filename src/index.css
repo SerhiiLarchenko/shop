@@ -136,6 +136,23 @@ img {
   width: 100%;
 }
 
+.card {
+  background-image: url("./static/restaurant.png");
+  border-radius: 5px;
+  border: 1px solid #fff;
+  color: #fff;
+  margin: 0 5px 10px 5px;
+  min-width: 200px;
+  overflow: hidden;
+  text-align: center;
+}
+.card__image, .card__title, .card__info, .card__btn {
+  margin-bottom: 10px;
+}
+.card__title {
+  font-size: 24px;
+}
+
 .cart-icon {
   background-image: url("./static/cart.svg");
   background-size: cover;
@@ -146,7 +163,7 @@ img {
   width: 40px;
 }
 .cart-icon__counter {
-  background-color: red;
+  background-color: #f00;
   border-radius: 50%;
   bottom: -10%;
   color: #fff;
@@ -262,21 +279,38 @@ img {
   height: 31px;
 }
 
-.card {
+.alert {
+  --w: 320px;
+  --h: 260px;
   background-image: url("./static/restaurant.png");
-  border-radius: 5px;
+  border-radius: 3px;
   border: 1px solid #fff;
-  color: #fff;
-  margin: 0 5px 10px 5px;
-  min-width: 200px;
-  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 20px;
+  height: var(--h);
+  justify-content: center;
+  padding: 10px;
+  position: fixed;
+  right: calc(50% - var(--w)/2);
   text-align: center;
+  top: calc(50% - var(--h)/2);
+  width: var(--w);
+  z-index: 30;
 }
-.card__image, .card__title, .card__info, .card__btn {
-  margin-bottom: 10px;
+.alert__info {
+  align-items: center;
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  width: 100%;
 }
-.card__title {
-  font-size: 24px;
+.alert__btn {
+  align-self: flex-end;
+}
+.alert--error {
+  border-color: #ec0d0d;
+  color: #ec0d0d;
 }
 
 .lds-roller {

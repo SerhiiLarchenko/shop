@@ -3,10 +3,14 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import Joi from 'joi-browser';
 
-import { 
-  toggleForm, toggleCartList 
-} from '../store/actions/displayActions';
+import Alert from './Alert';
+
 import { emptyCart } from '../store/actions/cartActions';
+import { alertError, alertOk} from '../store/actions/alertActions';
+import { 
+  toggleAlert, toggleCartList, toggleForm
+} from '../store/actions/displayActions';
+
 
 const orderAPI = 'http://localhost:8000/order';
 
@@ -16,7 +20,7 @@ class Form extends Component {
     nameWarning: '',
     emailWarning: '',
     validName: '',
-    validEmail: ''
+    validEmail: '',
   }
 
   hideForm = () => {
@@ -87,21 +91,24 @@ class Form extends Component {
       }
 
       axios.post(orderAPI, order).then(res => {
-        if (res.status === 200) {
           this.props.emptyCart();
-          this.props.toggleForm(false);
           this.props.toggleCartList(false);
-        }
-      }); 
+          this.props.alertOk(res);
+      }).catch( error => {
+          this.props.alertError(error);
+      });
+      this.props.toggleForm(false);
+      this.props.toggleAlert(true);
     }    
   }
 
   render() {
-
+    
+    const { isShown, alertIsShown } = this.props;
     const totalPrice = this.props.cart.reduce((sum, next)=> 
       Math.round((sum + next.price*next.times)*100)/100, 0);
   
-    return this.props.isShown ? 
+    return isShown ? 
       <form 
         className='sub-form' 
         onSubmit={this.handleSubmit}>
@@ -140,17 +147,20 @@ class Form extends Component {
             cancel
           </div>
         </div>
-      </form> : null;
+      </form> : alertIsShown ?
+        <Alert /> : null;
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     cart: state.cart,
-    isShown: state.display.formIsShown
+    isShown: state.display.formIsShown,
+    alertIsShown: state.display.alertIsShown
   }
 }
 
 export default connect(mapStateToProps, { 
-  toggleForm, toggleCartList, emptyCart 
+  toggleAlert, toggleForm, toggleCartList, 
+  emptyCart, alertError, alertOk 
 })(Form);

@@ -19,7 +19,7 @@ app.get('/products', (req, res, next) => {
 	const productsPath = `${__dirname}/data/products.json`;
 	res.sendFile(productsPath, error => {
 		if (error) next(error);
-		else console.log('Products are sent.');
+		else console.log('products are sent');
 	});
 });
 
@@ -51,12 +51,12 @@ app.post('/order', (req, res, next) => {
 		  fs.writeFile(orderPath, JSON.stringify(orders), error => {
 				 if (error) next(error);
 				 else {
-					 console.log('A new order is received.');
-					 res.send();
+					 console.log('a new order is received');
+					 res.send('thanks for your order');
 				 }
 			 }
 			);
-		} else next(new Error('The orders file is not read.'));
+		} else next(new Error('the orders file is not read'));
 	});
 });
 

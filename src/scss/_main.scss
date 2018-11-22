@@ -16,6 +16,23 @@
 	width: 100%;
 }
 
+.card {
+	background-image: $second-bg;
+	border-radius: 5px;
+	border: $main-border;
+	color: $main-color;
+	margin: 0 5px 10px 5px;
+	min-width: 200px;
+	overflow: hidden;
+	text-align: center;
+	&__image, &__title, &__info, &__btn {
+		margin-bottom: 10px;
+	}
+	&__title {
+		font-size: 24px;
+	}
+}
+
 .cart-icon {
 	background-image: url('./static/cart.svg');
 	background-size: cover;
@@ -25,7 +42,7 @@
 	top: 15px;
 	width: 40px;
 	&__counter {
-		background-color: red;
+		background-color: #f00;
 		border-radius: 50%;
 		bottom: -10%;
 		color: $main-color;
@@ -90,7 +107,7 @@
 	width: var(--w);
 	z-index: 20;
 	&__warning {
-		color:rgb(236, 13, 13);
+		color:#ec0d0d;
 		font-size: 14px;
 		padding-top: 5px;
 	}
@@ -142,19 +159,37 @@
 	}
 }
 
-.card {
+
+.alert {
+	--w: 320px;
+	--h: 260px;
 	background-image: $second-bg;
-	border-radius: 5px;
+	border-radius: 3px;
 	border: $main-border;
-	color: $main-color;
-	margin: 0 5px 10px 5px;
-	min-width: 200px;
-	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 20px;
+	height: var(--h);
+	justify-content: center;
+	padding: 10px;
+	position: fixed;
+	right: calc(50% - var(--w)/2);
 	text-align: center;
-	&__image, &__title, &__info, &__btn {
-		margin-bottom: 10px;
+	top: calc(50% - var(--h)/2);
+	width: var(--w);
+	z-index: 30;
+	&__info {
+		align-items: center;
+		display: flex;
+		height: 200px;
+		justify-content: center;
+		width: 100%;
 	}
-	&__title {
-		font-size: 24px;
+	&__btn {
+		align-self: flex-end;
+	}
+	&--error {
+		border-color:  #ec0d0d;
+		color: #ec0d0d;
 	}
 }
