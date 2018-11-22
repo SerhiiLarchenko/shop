@@ -44,7 +44,7 @@ class Shelf extends Component {
     return (
       this.state.loaded ?
       <div className="container">
-        <div className="row">
+        <div className="row row--bottom">
         {productList}
         </div>
       </div> : this.props.alertIsShown ?
