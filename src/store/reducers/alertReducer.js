@@ -1,9 +1,6 @@
 import { ALERT_ERROR, ALERT_OK } from '../actions/types';
 
-const initState = { 
-  status: false,
-  info: 'internal server error' 
-};
+const initState = { status: true };
 
 export default function (state = initState, action) {
 
