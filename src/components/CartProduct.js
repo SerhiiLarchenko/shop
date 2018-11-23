@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { toggleForm } from '../store/actions/displayActions';
 import { 
-  changeTimes, removeFromCart, emptyCart
+  changeNumber, removeFromCart, emptyCart
 } from '../store/actions/cartActions';
 
 
@@ -20,9 +20,9 @@ class ListElement extends PureComponent {
     this.hideForm();
   }
 
-  plusOrMinus = (sign) => {
+  changeNumber = (sign) => {
      const {title, price, id, times} = this.props; 
-     this.props.changeTimes({title,price,id,times}, sign);
+     this.props.changeNumber({title,price,id,times}, sign);
      this.hideForm();
   }
     
@@ -44,12 +44,12 @@ class ListElement extends PureComponent {
         <div>
           <button 
             className='btn  btn--narrow' 
-            onClick={this.plusOrMinus.bind(null,true)}>
+            onClick={this.changeNumber.bind(null,true)}>
             +
           </button>
           <button 
             className='btn  btn--narrow' 
-            onClick={this.plusOrMinus.bind(null,false)}>
+            onClick={this.changeNumber.bind(null,false)}>
             -
           </button>
           <button 
@@ -70,5 +70,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { 
-  changeTimes, removeFromCart, emptyCart, toggleForm 
+  changeNumber, removeFromCart, emptyCart, toggleForm 
 })(ListElement);

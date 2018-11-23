@@ -56,7 +56,7 @@ class Shelf extends Component {
 const mapStateToProps = (state) => {
   return {
     products: state.products,
-    alertIsShown: state.display.alertIsShown
+    alertIsShown: state.display.alert
   }
 }
 

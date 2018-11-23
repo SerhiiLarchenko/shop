@@ -1,4 +1,4 @@
-import { ALERT_OK, ALERT_ERROR } from './types';
+import { ALERT_ERROR, ALERT_OK } from './types';
 
 export const alertOk = (res) => (dispatch) => {
    dispatch({

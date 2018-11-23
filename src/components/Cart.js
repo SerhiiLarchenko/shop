@@ -28,7 +28,7 @@ class Cart extends Component {
     })
   }
 
-  empty = () => {
+  emptyCart = () => {
     this.props.emptyCart();
   }
 
@@ -51,7 +51,7 @@ class Cart extends Component {
       </div>
 
     return (
-      this.props.isShown ? 
+      this.props.shown ? 
         <div className="cart">
           <ul>{content}</ul>
           <div>
@@ -62,7 +62,7 @@ class Cart extends Component {
             </button>
             <button 
               className='btn btn--narrow' 
-              onClick={this.empty}>
+              onClick={this.emptyCart}>
               empty
             </button>
             <button 
@@ -79,7 +79,7 @@ class Cart extends Component {
 const mapStateToProps = (state) => { 
   return {
     cart: state.cart,
-    isShown: state.display.cartIsShown
+    shown: state.display.cart
   }
 }
 

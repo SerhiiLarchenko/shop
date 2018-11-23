@@ -1,7 +1,7 @@
 import {ADD_TO_CART, 
-        REMOVE_FROM_CART, 
-        CHANGE_TIMES, 
-        EMPTY_CART} from '../actions/types';
+        CHANGE_NUMBER, 
+        EMPTY_CART,
+        REMOVE_FROM_CART} from '../actions/types';
 
 const initState = [];
 
@@ -10,7 +10,7 @@ export default function(state = initState, action) {
    switch (action.type) {
 
       case ADD_TO_CART:
-      case CHANGE_TIMES:
+      case CHANGE_NUMBER:
 
         const newState = [...state];
         const newProduct = {...action.product};
@@ -33,7 +33,7 @@ export default function(state = initState, action) {
               match.times + 1 : 1;
             return newState;
           
-          case CHANGE_TIMES: 
+          case CHANGE_NUMBER: 
 
             let { times } = action.product;
             newProduct.times = action.sign ? 

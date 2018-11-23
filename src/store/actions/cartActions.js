@@ -1,6 +1,6 @@
 import {ADD_TO_CART, 
         REMOVE_FROM_CART, 
-        CHANGE_TIMES,
+        CHANGE_NUMBER,
         EMPTY_CART} from './types';
 
 export const addToCart = (product) => (dispatch) => {
@@ -17,9 +17,9 @@ export const removeFromCart = (id) => (dispatch) => {
     })
 }
 
-export const changeTimes = (product,sign) => (dispatch) => {
+export const changeNumber = (product,sign) => (dispatch) => {
     dispatch({
-        type: CHANGE_TIMES,
+        type: CHANGE_NUMBER,
         product,
         sign
     })

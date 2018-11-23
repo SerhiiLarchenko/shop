@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { addToCart } from '../store/actions/cartActions';
 
 class Product extends Component {
 
-  handleClick = () => {
+  addProduct = () => {
     const { title, price, times, id} = this.props;
     this.props.addToCart({title,price,times,id});
   }
@@ -29,7 +29,7 @@ class Product extends Component {
           </p>
           <button 
             className="btn card__btn" 
-            onClick={this.handleClick}>
+            onClick={this.addProduct}>
             add to cart
           </button>
         </div>

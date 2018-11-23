@@ -6,7 +6,7 @@ import { toggleCartList } from '../store/actions/displayActions';
 class CartIcon extends Component {
 
   handleClick = () => {
-    this.props.toggleCartList(!this.props.display);    
+    this.props.toggleCartList(!this.props.shown);    
   }
 
   render() {
@@ -32,7 +32,7 @@ class CartIcon extends Component {
 const mapStateToProps = (state) => {
   return {
     cart: state.cart,
-    display: state.display.cartIsShown
+    shown: state.display.cart
   }
 }
 

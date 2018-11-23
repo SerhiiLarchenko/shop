@@ -1,10 +1,10 @@
-export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
 export const ADD_TO_CART = 'ADD_TO_CART';
-export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
-export const CHANGE_TIMES = 'GHANGE_TIMES';
+export const ALERT_ERROR = 'ALERT_ERROR';
+export const ALERT_OK = 'ALERT_OK';
+export const CHANGE_NUMBER = 'CHANGE_NUMBER';
 export const EMPTY_CART = 'EMPTY_CART';
+export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const TOGGLE_ALERT = 'TOGGLE_ALERT';
 export const TOGGLE_CART_LIST = 'TOGGLE_CART_LIST';
 export const TOGGLE_FORM = 'TOGGLE_FORM';
-export const TOGGLE_ALERT = 'TOGGLE_ALERT';
-export const ALERT_OK = 'ALERT_OK';
-export const ALERT_ERROR = 'ALERT_ERROR';

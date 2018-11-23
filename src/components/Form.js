@@ -104,11 +104,11 @@ class Form extends Component {
 
   render() {
     
-    const { isShown, alertIsShown } = this.props;
+    const { shown, alertIsShown } = this.props;
     const totalPrice = this.props.cart.reduce((sum, next)=> 
       Math.round((sum + next.price*next.times)*100)/100, 0);
   
-    return isShown ? 
+    return shown ? 
       <form 
         className='sub-form' 
         onSubmit={this.handleSubmit}>
@@ -155,8 +155,8 @@ class Form extends Component {
 const mapStateToProps = (state) => {
   return {
     cart: state.cart,
-    isShown: state.display.formIsShown,
-    alertIsShown: state.display.alertIsShown
+    shown: state.display.form,
+    alertIsShown: state.display.alert
   }
 }
 
