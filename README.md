@@ -1,5 +1,7 @@
 ## Shop
 
+![shop](https://github.com/SerhiiLarchenko/shop/readme_files/shop.png)
+
 Simple e-commerce application with the shopping cart and order form. 
 This app has a minimum functionality and styles, but it’s enough for business.
 
