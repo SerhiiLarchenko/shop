@@ -1,5 +1,5 @@
 ## Shop
-----
+
 Simple e-commerce application with the shopping cart and order form. 
 This app has a minimum functionality and styles, but it’s enough for business.
 
@@ -19,35 +19,23 @@ This app has a minimum functionality and styles, but it’s enough for business.
 - BEM methodology
 
 ## Getting started
-----
+
 #### Requirements
 - Node.js
 - npm
 
-### Package installation
 
-Execute the following command on your terminal to install all the needed packages:
+- In project folder install node packages:
 ``` bash
 npm install
 ```
-
-### Run the API Server
-
-Start the server using:
+- Run the API server:
 ``` bash
 npm run api/server
 ```
-
-When done, the products API will be running on  `http://localhost:8000`
-
-keep it running on a terminal and go to the next step.
-
-### Start the React App
-
-just execute the following command and thats it!
+* Server will be running on  `http://localhost:8000`
+- Open new terminal tab and start react app:
 ``` bash
 npm start
 ```
-
-The application will start automatically in your browser on `http://localhost:3000`
-
+* The application will start automatically in your browser on `http://localhost:3000`
