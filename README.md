@@ -26,10 +26,10 @@ This app has a minimum functionality and styles, but it’s enough for business.
 
 #### Run
 - In project folder install node packages:
-`npm install`
+  `npm install`
 - Run the API server:
-`npm run api/server`
-..*Server will be running on  `http://localhost:8000`
+  `npm run api/server`
+  *Server will be running on  `http://localhost:8000`
 - Open new terminal tab and start react app:
-`npm start`
-..*The app will start automatically in browser on `http://localhost:3000`
+  `npm start`
+  *The app will start automatically in browser on `http://localhost:3000`
